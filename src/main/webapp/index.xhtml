@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<h:body>
+
+		<h:form enctype="multipart/form-data">
+			<p:growl showDetail="true"/>
+			
+			<p:fileUpload value="#{controllerUpload.file}" mode="simple" />
+			
+			
+			<!-- AJAX FALSE com h:commandbutton -->
+			<p:commandButton value="subir" 
+				actionListener="#{controllerUpload.upload()}" ajax="false"/>
+				
+			<br/>
+			
+			<h3>Modo avançado</h3>
+			
+			<p:fileUpload value="#{controllerUpload.file}" 
+				mode="advanced" cancelLabel="Cancelar" label="Selecionar" uploadLabel="Upload"
+				fileUploadListener="#{controllerUpload.upload()}" multiple="true"/>
+				
+				
+				
+			<h3>Download</h3>
+			<p:inputText value="#{controllerDownload.codigo}"/>
+			<p:commandButton value="Download" actionListener="#{controllerDownload.download()}" ajax="false">
+				<p:fileDownload value="#{controllerDownload.file}"/>
+			</p:commandButton>
+			
+			<h3>Visualizar</h3>
+			<p:commandButton value="Visualizar Imagem" 
+				actionListener="#{controllerDownload.visualizar()}" ajax="false"/>
+				
+		</h:form>
+
+</h:body>
+</html>
